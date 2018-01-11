@@ -4,6 +4,7 @@ dist/
 build/darwin/*
 build/win32/*
 build/linux/*
+.secret
 
 !**/.gitkeep
 
