@@ -6,13 +6,14 @@
   "description": "RingCentral token generator",
   "main": "build/electron.bundle.js",
   "scripts": {
-    "upgrade": "yarn-upgrade-all",
+    "upgrade": "yarn-upgrade-all && yarn download",
     "build": "webpack --progress --colors",
     "build:watch": "yarn build --watch",
     "release": "yarn build -p",
     "start": "electron .",
     "dist": "yarn release && rm -rf dist && electron-builder build --mac --win --linux --publish always",
-    "dist:dev": "rm -rf dist && electron-builder build --mac --win --linux"
+    "dist:dev": "rm -rf dist && electron-builder build --mac --win --linux",
+    "download": "node -r babel-register -r babel-polyfill build/downloader.js"
   },
   "repository": "git@github.com:tylerlong/ringcentral-token-generator.git",
   "author": {
@@ -25,12 +26,12 @@
     "electron-log": "^2.2.14",
     "electron-updater": "^2.18.2",
     "express": "^4.16.2",
-    "ngrok": "^2.2.24",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "ringcentral-js-concise": "^0.1.0"
   },
   "devDependencies": {
+    "axios": "^0.17.1",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-plugin-import": "^1.6.3",

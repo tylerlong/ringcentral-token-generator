@@ -1,6 +1,11 @@
 node_modules/
 *.bundle.*
 dist/
+build/darwin/*
+build/win32/*
+build/linux/*
+
+!**/.gitkeep
 
 # misc
 .DS_Store
