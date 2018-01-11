@@ -1,0 +1,71 @@
+{
+  "name": "ringcentral-token-generator",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "description": "RingCentral token generator",
+  "main": "build/electron.bundle.js",
+  "scripts": {
+    "upgrade": "yarn-upgrade-all",
+    "build": "webpack --progress --colors",
+    "build:watch": "yarn build --watch",
+    "release": "yarn build -p",
+    "start": "electron .",
+    "dist": "yarn release && rm -rf dist && electron-builder build --mac --win --linux --publish always",
+    "dist:dev": "rm -rf dist && electron-builder build --mac --win --linux"
+  },
+  "repository": "git@github.com:tylerlong/ringcentral-token-generator.git",
+  "author": {
+    "name": "Tyler Liu",
+    "email": "tyler.liu@ringcentral.com"
+  },
+  "dependencies": {
+    "electron-log": "^2.2.14",
+    "electron-updater": "^2.18.2"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-ts-node6-bluebird": "^1.0.1",
+    "css-loader": "^0.28.8",
+    "electron": "^1.7.10",
+    "electron-builder": "^19.52.1",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "standard": "^10.0.3",
+    "style-loader": "^0.19.1",
+    "webpack": "^3.10.0",
+    "yarn-upgrade-all": "^0.3.0"
+  },
+  "build": {
+    "appId": "token-generator.ringcentral.com",
+    "productName": "RingCentral Token Generator",
+    "files": [
+      "build/index.html",
+      "build/electron.bundle.js",
+      "build/preload.bundle.js",
+      "build/index.bundle.js",
+      "build/index.bundle.css",
+      "!node_modules${/*}"
+    ],
+    "mac": {
+      "category": "public.app-category.developer-tools"
+    },
+    "dmg": {
+      "contents": [
+        {
+          "x": 128,
+          "y": 160
+        },
+        {
+          "x": 384,
+          "y": 160,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "compression": "maximum"
+  }
+}
