@@ -16,13 +16,13 @@ export const startService = async (clientId, clientSecret, apiServer, errorCallb
         await rc.authorize({ code: req.query.code, redirect_uri: redirectUri })
       } catch (e) {
         if (e.response) {
-          errorCallback(e.response.data)
+          errorCallback(JSON.stringify(e.response.data, null, 2))
         } else {
-          errorCallback(e)
+          errorCallback(e.message)
         }
         return
       }
-      tokenCallback(rc.token())
+      tokenCallback(JSON.stringify(rc.token(), null, 2))
       res.send('')
     })
     app.listen(port)
