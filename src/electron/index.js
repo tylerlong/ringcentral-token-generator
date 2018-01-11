@@ -16,8 +16,8 @@ let browserWindow = null
 
 const createWindow = () => {
   browserWindow = new BrowserWindow({
-    width: 1280,
-    height: 800,
+    width: 1024,
+    height: 768,
     webPreferences: {
       nodeIntegration: false,
       preload: path.join(__dirname, 'preload.bundle.js')

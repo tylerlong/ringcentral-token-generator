@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Steps, Divider, Radio } from 'antd'
+import { Steps, Divider, Radio, Input, Form, Button } from 'antd'
 
 import './index.css'
 
@@ -9,7 +9,9 @@ class App extends React.Component {
     super(props)
     this.state = {
       current: 0,
-      server: 'https://platform.devtest.ringcentral.com'
+      server: 'https://platform.devtest.ringcentral.com',
+      clientId: '',
+      clientSecret: ''
     }
   }
 
@@ -23,12 +25,25 @@ class App extends React.Component {
         </Steps>
         <Divider />
         { this.state.current !== 0 ? null : (
-          <Radio.Group value={this.state.server} onChange={e => {
-            this.setState({ server: e.target.value })
-          }}>
-            <Radio.Button value='https://platform.devtest.ringcentral.com'>Sandbox</Radio.Button>
-            <Radio.Button value='https://platform.ringcentral.com'>Production</Radio.Button>
-          </Radio.Group>
+          <React.Fragment>
+            <Form>
+              <Form.Item style={{ textAlign: 'center' }}>
+                <Radio.Group value={this.state.server} onChange={e => { this.setState({ server: e.target.value }) }}>
+                  <Radio.Button value='https://platform.devtest.ringcentral.com'>Sandbox</Radio.Button>
+                  <Radio.Button value='https://platform.ringcentral.com'>Production</Radio.Button>
+                </Radio.Group>
+              </Form.Item>
+              <Form.Item>
+                <Input placeholder='Client ID' value={this.state.clientId} onChange={e => { this.setState({ clientId: e.target.value }) }} />
+              </Form.Item>
+              <Form.Item>
+                <Input placeholder='Client Secret' value={this.state.clientSecret} onChange={e => { this.setState({ clientSecret: e.target.value }) }} />
+              </Form.Item>
+              <Form.Item>
+                <Button type='primary' style={{ width: '100%' }} disabled={this.state.clientId === '' || this.state.clientSecret === ''}>Next</Button>
+              </Form.Item>
+            </Form>
+          </React.Fragment>
         ) }
         { this.state.current !== 1 ? null : (
           <div>
