@@ -20,8 +20,12 @@
     "email": "tyler.liu@ringcentral.com"
   },
   "dependencies": {
+    "detect-port": "^1.2.2",
     "electron-log": "^2.2.14",
-    "electron-updater": "^2.18.2"
+    "electron-updater": "^2.18.2",
+    "express": "^4.16.2",
+    "ngrok": "^2.2.24",
+    "ringcentral-js-concise": "^0.1.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
