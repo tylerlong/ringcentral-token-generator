@@ -3,7 +3,7 @@ import path from 'path'
 import * as R from 'ramda'
 import axios from 'axios'
 
-let ngrokPath = path.join(__dirname, process.platform, 'ngrok')
+let ngrokPath = path.join(__dirname, process.platform, 'ngrok').replace('app.asar', 'app.asar.unpacked')
 if (process.platform === 'win32') {
   ngrokPath += '.exe'
 }

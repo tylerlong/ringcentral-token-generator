@@ -62,7 +62,20 @@
       "!node_modules${/*}"
     ],
     "mac": {
-      "category": "public.app-category.developer-tools"
+      "category": "public.app-category.developer-tools",
+      "files": [
+        "build/darwin/ngrok"
+      ]
+    },
+    "win": {
+      "files": [
+        "build/win32/ngrok.exe"
+      ]
+    },
+    "linux": {
+      "files": [
+        "build/linux/ngrok"
+      ]
     },
     "dmg": {
       "contents": [
@@ -78,6 +91,11 @@
         }
       ]
     },
+    "asarUnpack": [
+      "build/darwin/ngrok",
+      "build/win32/ngrok.exe",
+      "build/linux/ngrok"
+    ],
     "compression": "maximum"
   }
 }
