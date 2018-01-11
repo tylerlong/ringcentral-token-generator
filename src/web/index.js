@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Steps, Divider, Radio, Input, Form, Button, Modal } from 'antd'
+import { Steps, Divider, Radio, Input, Form, Button, Modal, Tag } from 'antd'
 
 import './index.css'
 
@@ -61,7 +61,8 @@ class App extends React.Component {
         ) }
         { this.state.current !== 1 ? null : (
           <div>
-            Configure RingCentral app and set its redirectUri to <code>{this.state.redirectUri}</code>.
+            <h3>Step 1: configure RingCentral app and set its redirectUri to <Tag>{this.state.redirectUri}</Tag></h3>
+            <h3>Step 2: trigger the 3-legged oauth flow</h3>
             <Button style={{ width: '100%' }} onClick={e => {
               this.setState({ current: 0 })
               // stop service
@@ -70,7 +71,9 @@ class App extends React.Component {
         ) }
         { this.state.current !== 2 ? null : (
           <div>
-            Hello world
+            <pre>
+              { this.state.token }
+            </pre>
             <Button style={{ width: '100%' }} onClick={e => { this.setState({ current: 1 }) }}>Previous</Button>
           </div>
         ) }

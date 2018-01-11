@@ -26,6 +26,7 @@
     "electron-log": "^2.2.14",
     "electron-updater": "^2.18.2",
     "express": "^4.16.2",
+    "ramda": "^0.25.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "ringcentral-js-concise": "^0.1.0"
