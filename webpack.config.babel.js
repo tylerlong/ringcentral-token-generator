@@ -4,7 +4,7 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin'
 const webConfig = {
   target: 'web',
   entry: {
-    index: ['babel-polyfill', './src/web/index.js']
+    index: './src/web/index.js'
   },
   output: {
     path: path.join(__dirname, 'build'),
@@ -26,7 +26,11 @@ const webConfig = {
           loader: 'babel-loader',
           options: {
             presets: [
-              'env'
+              'env',
+              'react'
+            ],
+            plugins: [
+              ['import', { libraryName: 'antd', style: 'css' }]
             ]
           }
         }
@@ -43,7 +47,7 @@ const electronConfig = {
   target: 'electron',
   entry: {
     electron: ['babel-polyfill', './src/electron/index.js'],
-    preload: './src/electron/preload.js'
+    preload: ['babel-polyfill', './src/electron/preload.js']
   },
   output: {
     filename: '[name].bundle.js',
