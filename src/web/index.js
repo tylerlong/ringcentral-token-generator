@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Steps, Divider, Radio, Input, Form, Button, Row, Col } from 'antd'
+import { Steps, Divider, Radio, Input, Form, Button, Modal } from 'antd'
 
 import './index.css'
 
@@ -9,9 +9,11 @@ class App extends React.Component {
     super(props)
     this.state = {
       current: 0,
-      server: 'https://platform.devtest.ringcentral.com',
+      apiServer: 'https://platform.devtest.ringcentral.com',
       clientId: '',
-      clientSecret: ''
+      clientSecret: '',
+      redirectUri: '',
+      token: ''
     }
   }
 
@@ -28,7 +30,7 @@ class App extends React.Component {
           <React.Fragment>
             <Form>
               <Form.Item style={{ textAlign: 'center' }}>
-                <Radio.Group value={this.state.server} onChange={e => { this.setState({ server: e.target.value }) }}>
+                <Radio.Group value={this.state.apiServer} onChange={e => { this.setState({ apiServer: e.target.value }) }}>
                   <Radio.Button value='https://platform.devtest.ringcentral.com'>Sandbox</Radio.Button>
                   <Radio.Button value='https://platform.ringcentral.com'>Production</Radio.Button>
                 </Radio.Group>
@@ -40,18 +42,30 @@ class App extends React.Component {
                 <Input placeholder='Client Secret' value={this.state.clientSecret} onChange={e => { this.setState({ clientSecret: e.target.value }) }} />
               </Form.Item>
               <Form.Item>
-                <Button type='primary' style={{ width: '100%' }} disabled={this.state.clientId === '' || this.state.clientSecret === ''} onClick={e => { this.setState({ current: 1 }) }}>Next</Button>
+                <Button type='primary' style={{ width: '100%' }} disabled={this.state.clientId === '' || this.state.clientSecret === ''} onClick={e => {
+                  global.startService(this.state.clientId, this.state.clientSecret, this.state.apiServer,
+                    error => {
+                      Modal.error({ title: 'Something is wrong', content: error })
+                    },
+                    redirectUri => {
+                      this.setState({ current: 1, redirectUri })
+                    },
+                    token => {
+                      this.setState({ current: 2, token })
+                    }
+                  )
+                }}>Next</Button>
               </Form.Item>
             </Form>
           </React.Fragment>
         ) }
         { this.state.current !== 1 ? null : (
           <div>
-            Hello world
-            <Row gutter={16}>
-              <Col span={12}><Button style={{ width: '100%' }} onClick={e => { this.setState({ current: 0 }) }}>Previous</Button></Col>
-              <Col span={12}><Button type='primary' style={{ width: '100%' }} onClick={e => { this.setState({ current: 2 }) }}>Next</Button></Col>
-            </Row>
+            Configure RingCentral app and set its redirectUri to <code>{this.state.redirectUri}</code>.
+            <Button style={{ width: '100%' }} onClick={e => {
+              this.setState({ current: 0 })
+              // stop service
+            }}>Previous</Button>
           </div>
         ) }
         { this.state.current !== 2 ? null : (
