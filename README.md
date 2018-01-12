@@ -3,6 +3,10 @@
 RingCentral token generator
 
 
+![RingCentral Token Generator](screenshot.png)
+
+
+### [Download](https://github.com/tylerlong/ringcentral-token-generator/releases)
 
 
 ## Setup
