@@ -76,6 +76,10 @@ class App extends React.Component {
             <pre>
               { this.state.token }
             </pre>
+            <p>Compressed version:</p>
+            <pre>
+              { JSON.stringify(JSON.parse(this.state.token)) }
+            </pre>
             <Divider />
             <Button style={{ width: '100%' }} onClick={e => { this.setState({ current: 1 }) }}>Previous</Button>
           </div>
