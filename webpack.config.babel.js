@@ -1,5 +1,6 @@
 import path from 'path'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
+import webpack from 'webpack'
 
 const webConfig = {
   target: 'web',
@@ -71,6 +72,9 @@ const electronConfig = {
   node: {
     __dirname: false // https://github.com/webpack/webpack/issues/2010#issuecomment-181256611
   },
+  plugins: [
+    new webpack.DefinePlugin({ 'global.GENTLY': false })
+  ],
   devtool: 'source-map'
 }
 
