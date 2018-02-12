@@ -21,7 +21,7 @@
     "email": "tyler.liu@ringcentral.com"
   },
   "dependencies": {
-    "antd": "^3.2.0",
+    "antd": "^3.2.1",
     "detect-port": "^1.2.2",
     "electron-log": "^2.2.14",
     "electron-updater": "^2.20.1",
@@ -47,7 +47,7 @@
     "extract-text-webpack-plugin": "^3.0.2",
     "standard": "^10.0.3",
     "style-loader": "^0.20.1",
-    "webpack": "^3.10.0",
+    "webpack": "^3.11.0",
     "yarn-upgrade-all": "^0.3.0"
   },
   "build": {
