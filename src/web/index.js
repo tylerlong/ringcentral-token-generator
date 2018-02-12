@@ -10,8 +10,8 @@ class App extends React.Component {
     this.state = {
       current: 0,
       apiServer: 'https://platform.devtest.ringcentral.com',
-      clientId: '',
-      clientSecret: '',
+      clientId: global.dev ? 'yPJrqdkWTROnWoNBJGqyYg' : '',
+      clientSecret: global.dev ? 'Q5XddvjRT1uI2STs6sweVQ7tG7MpmhScyEgLXnN3dSEQ' : '',
       redirectUri: '',
       token: '',
       loading: false
