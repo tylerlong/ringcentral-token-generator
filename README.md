@@ -2,6 +2,8 @@
 
 RingCentral token generator
 
+For its usage, please refer to this [blog article](https://medium.com/ringcentral-developers/latest-glip-bot-provision-flow-a626a8dd0d98).
+
 
 ![RingCentral Token Generator](screenshot.png)
 
